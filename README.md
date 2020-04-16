@@ -1,5 +1,9 @@
 # singularity_cellranger
 
+Upon reusing the recipe to create container images, note that each time a new download link has to be generated from 10X website
+https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/latest
+Delete the old link in the recipe and replace it with the new link.
+
 ## Starting the Singularity Container and Bind-moungting 
 ```
 singularity shell --bind /local_data_directory:/data,/local_cellranger_output_directory:/cellranger_output singularity_cellranger.sif
