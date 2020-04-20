@@ -1,12 +1,20 @@
 # singularity_cellranger
+## Reusing the Recipe
 
 Upon reusing the recipe to create container images, note that each time a new download link has to be generated from 10X website
 https://support.10xgenomics.com/single-cell-gene-expression/software/downloads/latest
 Delete the old link in the recipe and replace it with the new link.
 
 ## Starting the Singularity Container and Bind-moungting 
+### Using the pre-built version
+First pull the singularity image from Singularity Hub with the renaming
 ```
-singularity shell --bind /local_data_directory:/data,/local_cellranger_output_directory:/cellranger_output singularity_cellranger.sif
+singularity pull --disable-cache --name your_image_name.sif shub://DylanYang7225/Cellranger
+```
+
+Given that the pre-built image has been pulled or a self-built version of singularity image is preferred (suppose the image is named your_image_name.sif), then the following command could be run to start the container
+```
+singularity shell --bind /local_data_directory:/data,/local_cellranger_output_directory:/cellranger_output your_image_name.sif
 ```
 
 ## Running Cellranger 
