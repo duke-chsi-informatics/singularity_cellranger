@@ -7,9 +7,9 @@ Delete the old link in the recipe and replace it with the new link.
 
 ## Starting the Singularity Container and Bind-moungting 
 ### Using the pre-built version
-First pull the singularity image from Singularity Hub with the renaming. The --diable-cache option is important as the image size (11G) is over the default cache size of singularity (10G) which will lead to interruption of pulling.
+First pull the singularity image from Singularity Hub with the renaming. The --disable-cache command is optional. If working on a machine/server where the cache size is limited to below the image size (11G), then --disable-cache can be added to work around the size limit. This option is required if working on Duke Compute Cluster as each user only has 10G of personal space in the home directory, which will lead to interruption of pulling.
 ```
-singularity pull --disable-cache --name your_image_name.sif shub://DylanYang7225/Cellranger
+singularity pull [--disable-cache] --name your_image_name.sif shub://DylanYang7225/Cellranger
 ```
 
 Given that the pre-built image has been pulled or a self-built version of singularity image is preferred (suppose the self-built image is also named your_image_name.sif), then the following command could be run to start the container
