@@ -1,0 +1,19 @@
+Bootstrap: shub
+From: shub://DylanYang7225/Cellrange
+
+%labels
+    Maintainer Hang(Dylan) Yang
+    Image_Name cellRanger_v2
+    Image_Version cellRanger_v2
+
+%environment
+  export PATH=$PATH:/usr/local/bin
+
+%post
+  export DEBIAN_FRONTEND=noninteractive
+  apt-get update
+  apt-get install -y rpm2cpio
+  wget -O bcl2fastq_installer.zip "https://files.softwaredownloads.illumina.com/e8ed3335-5201-48ff-a2bc-db4bfb792c85/bcl2fastq2-v2-20-0-linux-x86-64.zip?Expires=1589492678&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9maWxlcy5zb2Z0d2FyZWRvd25sb2Fkcy5pbGx1bWluYS5jb20vZThlZDMzMzUtNTIwMS00OGZmLWEyYmMtZGI0YmZiNzkyYzg1L2JjbDJmYXN0cTItdjItMjAtMC1saW51eC14ODYtNjQuemlwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNTg5NDkyNjc4fX19XX0_&Signature=i0zuGZzV6zMj8cxTEKGwcvwo0nrPicCYSqn7-hAgR2XQ5yJubn6CBWT6acUXdC8VHlZ-SPtu-taVLwQrInOoPdFJi8iv4F5ZiHSckV2VwXws1ULCgRE1HahT6PkKoDXDqz5mgMIP6vECk2VC9qyAZbpxwIgGQbtr0sa48XYSWfQk3SuWPrwMGNKE8aaJ-VVrA-mxulh~kpiXW9YKLin6MCYLopiFwvBkw0IqSP9KlbmpGPVWcq3himQf6E4hvw45nLb9reFJ3a43ly~YflAXscJELhGcPjf2dLrmZ1GE~k~hhNyWESoxIVhHkxfnv~4wxooZGh~jVYktx9kkg8htQQ__&Key-Pair-Id=APKAJO3UYWPXK4A26FPQ"
+  unzip bcl2fastq_installer.zip
+  rpm2cpio ./bcl2fastq2-v2.20.0.422-Linux-x86_64.rpm | cpio -idmv
+  rm bcl2fastq_installer.zip
